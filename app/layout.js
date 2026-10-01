@@ -58,7 +58,7 @@ const SAVOY_BODY_FONT =
 const SAVOY_LABEL_FONT =
   process.env.NEXT_PUBLIC_LABEL_FONT ?? "'Montserrat', system-ui, sans-serif";
 
-const BASE_URL = "https://www.savoybankandtrust.com"; // ← update to your real domain
+const BASE_URL = "https://savoy-bank-and-trust.vercel.app/"; // ← update to your real domain https://www.savoybankandtrust.com
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
