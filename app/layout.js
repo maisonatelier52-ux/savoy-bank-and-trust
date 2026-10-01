@@ -29,6 +29,7 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NameChangeAnnouncement from "@/components/NameChangeAnnouncement";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -37,28 +38,24 @@ const geistMono = Geist_Mono({
 });
 
 // ── Theme: read from .env (NEXT_PUBLIC_BG_COLOR / NEXT_PUBLIC_FONT_COLOR) ──
-const SAVOY_BG = process.env.NEXT_PUBLIC_BG_COLOR ?? "#001a33";
-const SAVOY_FONT = process.env.NEXT_PUBLIC_FONT_COLOR ?? "#ffffff";
-const _hex = SAVOY_BG.replace("#", "");
+const SAVOY_BG   = process.env.NEXT_PUBLIC_BG_COLOR   ?? '#001a33';
+const SAVOY_FONT = process.env.NEXT_PUBLIC_FONT_COLOR  ?? '#ffffff';
+const _hex = SAVOY_BG.replace('#', '');
 const SAVOY_BG_RGB = [
   parseInt(_hex.slice(0, 2), 16),
   parseInt(_hex.slice(2, 4), 16),
   parseInt(_hex.slice(4, 6), 16),
-].join(",");
+].join(',');
 
 // ── Theme: read fonts from .env (single-point font control) ──
 // Old inline fonts across pages/components are untouched in the code;
 // these variables + the CSS in globals.css simply override them
 // site-wide via !important, the same pattern used for the colors above.
-const SAVOY_HEADING_FONT =
-  process.env.NEXT_PUBLIC_HEADING_FONT ??
-  "'Cormorant Garamond', Georgia, serif";
-const SAVOY_BODY_FONT =
-  process.env.NEXT_PUBLIC_BODY_FONT ?? "'Inter', system-ui, sans-serif";
-const SAVOY_LABEL_FONT =
-  process.env.NEXT_PUBLIC_LABEL_FONT ?? "'Montserrat', system-ui, sans-serif";
+const SAVOY_HEADING_FONT = process.env.NEXT_PUBLIC_HEADING_FONT ?? "'Cormorant Garamond', Georgia, serif";
+const SAVOY_BODY_FONT    = process.env.NEXT_PUBLIC_BODY_FONT    ?? "'Inter', system-ui, sans-serif";
+const SAVOY_LABEL_FONT   = process.env.NEXT_PUBLIC_LABEL_FONT   ?? "'Montserrat', system-ui, sans-serif";
 
-const BASE_URL = "https://savoy-bank-and-trust.vercel.app"; // ← update to your real domain https://www.savoybankandtrust.com
+const BASE_URL = "https://www.savoybankandtrust.com"; // ← update to your real domain
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
@@ -106,7 +103,7 @@ export const metadata = {
       "Tailored banking, trust, and market services for clients who value discretion, continuity, and clear guidance in a complex international landscape.",
     images: [
       {
-        url: "/savoy-card.png",
+        url: "/savoy-card.jpg",
         width: 1200,
         height: 630,
         alt: "Savoy Bank & Trust – Private Banking in The Bahamas",
@@ -121,7 +118,7 @@ export const metadata = {
     title: "Savoy Bank & Trust | Private Banking in The Bahamas",
     description:
       "Tailored banking, trust, and market services for clients who value discretion, continuity, and clear guidance.",
-    images: ["/savoy-card.png"],
+    images: ["/savoy-card.jpg"],
   },
 
   icons: {
@@ -139,13 +136,9 @@ export default function RootLayout({ children }) {
     >
       <head>
         {/* ── Savoy Theme: CSS variables from .env injected here ── */}
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              `:root{--savoy-bg:${SAVOY_BG};--savoy-bg-rgb:${SAVOY_BG_RGB};--savoy-font:${SAVOY_FONT};` +
-              `--savoy-heading-font:${SAVOY_HEADING_FONT};--savoy-body-font:${SAVOY_BODY_FONT};--savoy-label-font:${SAVOY_LABEL_FONT};}`,
-          }}
-        />
+        <style dangerouslySetInnerHTML={{ __html:
+          `:root{--savoy-bg:${SAVOY_BG};--savoy-bg-rgb:${SAVOY_BG_RGB};--savoy-font:${SAVOY_FONT};` +
+          `--savoy-heading-font:${SAVOY_HEADING_FONT};--savoy-body-font:${SAVOY_BODY_FONT};--savoy-label-font:${SAVOY_LABEL_FONT};}` }} />
         <link rel="icon" href="/savoy-icon.ico" sizes="any" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -170,8 +163,8 @@ export default function RootLayout({ children }) {
               "@type": "BankOrCreditUnion",
               name: "Savoy Bank & Trust",
               url: BASE_URL,
-              logo: `${BASE_URL}/savoy-logo.png`,
-              image: `${BASE_URL}/savoy-card.png`,
+              logo: `${BASE_URL}/savoy-bank-logo.png`,
+              image: `${BASE_URL}/savoy-card.jpg`,
               description:
                 "A privately held financial institution in The Bahamas offering tailored banking, trust, and market services.",
               address: {
@@ -183,7 +176,10 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <NameChangeAnnouncement />
+      </body>
     </html>
   );
 }

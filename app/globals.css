@@ -223,3 +223,142 @@ body, p {
   font-family: 'General Sans', 'Inter', system-ui, sans-serif !important;
 }
 */
+
+/* Supplied Savoy Bank & Trust wordmark, kept at its original aspect ratio. */
+.savoy-brand-logo {
+  display: block;
+  width: 340px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.page-header .savoy-brand-logo {
+  width: 340px;
+  height: auto !important;
+}
+.brand-reveal-logo-mobile { width: 280px; max-width: 70vw; }
+.brand-reveal-logo-desktop { width: 390px; max-width: 30vw; }
+.footer-brand-logo { width: 240px; }
+.brand-reveal-location {
+  margin-top: 18px;
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+}
+.savoy-brand-symbol { display: block; overflow: hidden; }
+@media (max-width: 1024px) {
+  .page-header .savoy-brand-logo { width: 300px; }
+}
+@media (max-width: 640px) {
+  .page-header .savoy-brand-logo { width: min(235px, 65vw) !important; }
+}
+
+/* Name-change notice: matches the Savoy Securities announcement. */
+html:has(.announcement-dialog[open]),
+body:has(.announcement-dialog[open]) {
+  overflow: hidden !important;
+}
+.announcement-dialog {
+  width: min(640px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 64px clamp(36px, 5vw, 72px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  color: #f1f3f4;
+  background: linear-gradient(145deg, #112b43, #061627 75%);
+  border: 1px solid #8e9dab66;
+  border-radius: 3px;
+  box-shadow: 0 30px 100px #0008;
+  text-align: center;
+  color-scheme: dark;
+}
+.announcement-dialog[open] {
+  animation: announcement-reveal 0.45s ease-out both;
+}
+.announcement-dialog::backdrop {
+  background: rgb(2 9 17 / 72%);
+  backdrop-filter: blur(5px);
+}
+.announcement-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 12px;
+  border: 0;
+  background: transparent;
+  color: #b9c3ce;
+  cursor: pointer;
+}
+.announcement-close:hover { color: white; }
+.announcement-close svg { width: 20px; height: 20px; }
+.announcement-symbol { width: 64px; height: 64px; margin: 0 auto 24px; opacity: 0.85; }
+.announcement-eyebrow {
+  font: 400 0.65rem/1.8 var(--savoy-body-font);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #b9c3ce;
+}
+.announcement-dialog h2 {
+  margin: 18px 0 24px;
+  font-family: var(--savoy-heading-font);
+  font-size: clamp(1.85rem, 4vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  text-wrap: balance;
+  outline: none;
+}
+.announcement-dialog p { font-size: 0.875rem; font-weight: 300; line-height: 1.75; color: #b9c3ce; }
+.announcement-actions { display: flex; justify-content: center; gap: 14px; margin-top: 32px; }
+.announcement-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-width: 145px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 1px solid #8e9dab;
+  border-radius: 2px;
+  background: transparent;
+  color: #f1f3f4;
+  font: 400 0.85rem/1.5 var(--savoy-body-font);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.announcement-action:hover { background: #ffffff12; }
+.announcement-action-primary { background: #e4e9ee; border-color: #e4e9ee; color: #061627; }
+.announcement-action-primary:hover { background: white; }
+.announcement-dialog :focus-visible { outline: 2px solid #e4e9ee; outline-offset: 4px; }
+.announcement-dialog h2:focus { outline: none; }
+.announcement-page { width: min(1100px, 84%); margin-inline: auto; padding-block: 190px 100px; }
+.announcement-page-symbol { width: 78px; height: 78px; margin-bottom: 38px; opacity: 0.85; }
+.announcement-page h1 {
+  margin-top: 24px;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+.announcement-page-copy { max-width: 760px; margin-top: 40px; }
+.announcement-page-copy p { margin-bottom: 24px; font-size: 1.08rem; font-weight: 300; line-height: 1.8; }
+.announcement-page-copy .announcement-page-lead { font: 400 clamp(1.65rem, 2.5vw, 2.2rem)/1.3 var(--savoy-heading-font); }
+.announcement-return { display: inline-flex; gap: 24px; min-height: 44px; align-items: center; border-bottom: 1px solid #8e9dab; margin-top: 20px; font-size: 0.875rem; }
+@keyframes announcement-reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 480px) {
+  .announcement-dialog { padding: 52px 32px; }
+  .announcement-symbol { width: 52px; height: 52px; margin-bottom: 22px; }
+  .announcement-dialog p { font-size: 0.85rem; line-height: 1.65; }
+  .announcement-actions { flex-direction: column; gap: 10px; margin-top: 26px; }
+  .announcement-page { padding-block: 130px 64px; }
+  .announcement-page-copy p { font-size: 1rem; }
+}

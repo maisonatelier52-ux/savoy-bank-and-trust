@@ -34,3 +34,26 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## October 2026 branding and announcement update
+
+The supplied `LOGO_SAVOY_ALL-1.png` is preserved unchanged at
+`public/savoy-bank-logo.png`. `components/BrandLogo.jsx` displays it at its
+original aspect ratio in the shared header, brand reveal and footer.
+
+The shared layout displays the name-change announcement across the website.
+It matches the Savoy Securities popup, including its navy panel and two buttons.
+Copy, effective date, destination and the session dismissal key are kept in
+`lib/announcement.js`.
+
+- **Learn More** opens `/name-change`, which contains the supplied announcement.
+- **Got it**, the close button and Escape dismiss it for the current browser session.
+- The mobile homepage waits for its existing introduction animation before opening.
+- The announcement page itself does not display another popup.
+- The notice appears immediately on the updated website; November 1, 2026 is the
+  effective date in the supplied copy, not a scheduled activation date.
+
+Validation: production build succeeded; edited JavaScript/JSX files lint with
+zero errors (one pre-existing custom-font warning in the layout). Browser checks
+covered desktop, 390px mobile and 320px mobile layouts, the Learn More destination,
+dismissal, session persistence, keyboard controls and the header/footer logos.

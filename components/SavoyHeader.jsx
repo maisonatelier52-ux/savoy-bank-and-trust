@@ -487,6 +487,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import BrandLogo from "@/components/BrandLogo";
+
 export default function SavoyHeader({ phase = 4 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [ebankingOpen, setEbankingOpen] = useState(false);
@@ -639,7 +641,7 @@ export default function SavoyHeader({ phase = 4 }) {
             padding-right: 2rem !important;
             padding-top: 2rem !important;
           }
-          .header-logo   { height: 4.2rem !important; }
+          .header-logo   { width: 300px; height: auto; }
         }
 
         /* ── Mobile ── */
@@ -650,7 +652,7 @@ export default function SavoyHeader({ phase = 4 }) {
             padding-top: 1.5rem !important;
             padding-bottom: 1rem !important;
           }
-          .header-logo { height: 6.25rem !important; }
+          .header-logo { width: min(235px, 65vw); height: auto; }
           .mobile-nav  { gap: 1.75rem !important; }
           .mobile-nav > a { font-size: clamp(1.25rem, 7vw, 1.9rem) !important; }
         }
@@ -738,10 +740,10 @@ export default function SavoyHeader({ phase = 4 }) {
         {/* Logo - Click goes to Home */}
         <div className="flex items-center">
           <Link href="/" className="block">
-            <img
-              src="/savoy-logo.png"
-              alt="Savoy Logo"
-              className="header-logo h-27 w-auto"
+            <BrandLogo
+              className="header-logo"
+              sizes="(max-width: 640px) 235px, 340px"
+              preload
             />
           </Link>
         </div>

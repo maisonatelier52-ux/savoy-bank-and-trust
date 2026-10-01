@@ -576,6 +576,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import BrandLogo from "@/components/BrandLogo";
 
 // Only font import stays — Tailwind can't do @import
 const fontStyle = `
@@ -674,31 +675,8 @@ export default function BrandFooterSection() {
             willChange: "transform, opacity",
           }}
         >
-          <div className="flex items-center gap-4">
-            <Image src="/logo-savoy.png" alt="Savoy" width={60} height={60} />
-            <span
-              className="text-5xl text-white"
-              style={{
-                fontFamily: serif,
-                fontWeight: 400,
-                letterSpacing: "0.02em",
-                lineHeight: 1,
-              }}
-            >
-              SAVOY
-            </span>
-          </div>
-          <p
-            className="text-[0.6rem] text-white pl-14 mt-1"
-            style={{
-              fontFamily: serif,
-              letterSpacing: "0.04em",
-              fontWeight: 300,
-            }}
-          >
-            SAVOY BANK &amp; TRUST &nbsp;|&nbsp;
-            <em style={{ fontFamily: sans }}>The Bahamas</em>
-          </p>
+          <BrandLogo className="brand-reveal-logo-mobile" sizes="280px" />
+          <p className="brand-reveal-location">The Bahamas</p>
         </div>
       </section>
 
@@ -764,31 +742,8 @@ export default function BrandFooterSection() {
             willChange: "transform, opacity",
           }}
         >
-          <div className="flex items-center gap-4">
-            <Image src="/logo-savoy.png" alt="Savoy" width={90} height={90} />
-            <span
-              className="text-7xl text-white"
-              style={{
-                fontFamily: serif,
-                fontWeight: 400,
-                letterSpacing: "0.02em",
-                lineHeight: 1,
-              }}
-            >
-              SAVOY
-            </span>
-          </div>
-          <p
-            className="text-[12px] text-white pl-20 mt-1"
-            style={{
-              fontFamily: serif,
-              letterSpacing: "0.04em",
-              fontWeight: 300,
-            }}
-          >
-            SAVOY BANK &amp; TRUST &nbsp;|&nbsp;
-            <em style={{ fontFamily: sans }}>The Bahamas</em>
-          </p>
+          <BrandLogo className="brand-reveal-logo-desktop" sizes="390px" />
+          <p className="brand-reveal-location">The Bahamas</p>
         </div>
       </section>
 
@@ -804,16 +759,7 @@ export default function BrandFooterSection() {
           <div className="flex items-start justify-between gap-10 flex-wrap">
             {/* Logo + name */}
             <div className="flex flex-col gap-3">
-              <Image
-                src="/logo-savoy.png"
-                alt="Savoy Logo"
-                width={48}
-                height={48}
-                style={{ filter: "brightness(0) invert(1)" }}
-              />
-              <p className="text-xs text-white mt-1 uppercase tracking-widest font-thin">
-                Savoy Bank &amp; Trust
-              </p>
+              <BrandLogo className="footer-brand-logo" sizes="240px" />
             </div>
 
             {/* Registered office */}
