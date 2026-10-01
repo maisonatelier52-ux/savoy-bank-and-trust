@@ -1,0 +1,225 @@
+/* @import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #001a33;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #001a33;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ── Added: mobile essentials only — nothing above this line was changed ── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll on mobile */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Improve font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Remove tap highlight on mobile */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus ring for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 3px;
+}
+
+/* Images never overflow their container */
+img,
+video {
+  max-width: 100%;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   SAVOY THEME — Single-point color control
+   ─────────────────────────────────────────────────────────────────────
+   CSS variables are injected into :root by app/layout.js at runtime,
+   reading from .env:
+     NEXT_PUBLIC_BG_COLOR   → --savoy-bg   (background everywhere)
+     NEXT_PUBLIC_FONT_COLOR → --savoy-font (font color everywhere)
+   ─────────────────────────────────────────────────────────────────────
+   To change ALL colors in one step:
+     1. Open .env
+     2. Edit NEXT_PUBLIC_BG_COLOR and/or NEXT_PUBLIC_FONT_COLOR
+     3. Restart dev server: npm run dev
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ── Background: Tailwind bg-[#001a33] (all pages & components) ── */
+.bg-\[\#001a33\]         { background-color: var(--savoy-bg) !important; }
+
+/* ── Background with opacity modifier: bg-[#001a33]/20 ── */
+.bg-\[\#001a33\]\/20     { background-color: color-mix(in srgb, var(--savoy-bg) 20%, transparent) !important; }
+
+/* ── Font: Tailwind text-white (all pages & components) ── */
+.text-white              { color: var(--savoy-font) !important; }
+
+/* ── Body and html baseline ── */
+html, body               { background-color: var(--savoy-bg); color: var(--savoy-font); }
+
+@media (max-width: 640px) {
+  .page-header {
+    padding: 1.25rem !important;
+  }
+
+  .header-logo {
+    height: 3.75rem !important;
+    width: auto !important;
+  }
+
+  .mobile-nav {
+    padding: 2rem;
+    gap: 1.8rem !important;
+  }
+
+  .mobile-nav a {
+    max-width: 100%;
+    text-align: center;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   SAVOY THEME — Single-point FONT control
+   ─────────────────────────────────────────────────────────────────────
+   Every page/component in this project sets its fonts with an inline
+   style, e.g. style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+   (sometimes via a local `serif` / `sans` / `fontHeading` / `fontBody` /
+   `fontLabel` const). None of that old code has been removed or edited —
+   it's still sitting in every file exactly as before.
+
+   Instead, the rules below match on the font name that ends up in each
+   element's rendered `style` attribute and override it with !important,
+   pointing at the CSS variables injected by app/layout.js from .env
+   (NEXT_PUBLIC_HEADING_FONT / NEXT_PUBLIC_BODY_FONT / NEXT_PUBLIC_LABEL_FONT).
+   A CSS !important rule in a stylesheet beats an inline style that has
+   no !important of its own, so this reliably wins everywhere, site-wide.
+
+   To change the fonts everywhere:
+     1. Open .env
+     2. Edit NEXT_PUBLIC_HEADING_FONT / NEXT_PUBLIC_BODY_FONT / NEXT_PUBLIC_LABEL_FONT
+     3. Restart dev server: npm run dev
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Fallback values in case app/layout.js hasn't injected the vars yet */
+:root {
+  --savoy-heading-font: 'Cormorant Garamond', Georgia, serif;
+  --savoy-body-font: 'Inter', system-ui, sans-serif;
+  --savoy-label-font: 'Montserrat', system-ui, sans-serif;
+}
+
+/* ── Headings: catches every inline style built from the old
+   "Cormorant Garamond" / "Cormorant" fonts (serif / fontHeading vars) ── */
+[style*="Cormorant"] {
+  font-family: var(--savoy-heading-font) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* ── Body copy: catches every inline style built from the old
+   "General Sans" / "Inter" fonts (sans / fontBody vars) ── */
+[style*="General Sans"],
+[style*="Inter"] {
+  font-family: var(--savoy-body-font) !important;
+  font-weight: 400 !important;
+}
+
+/* ── Small uppercase subtitle labels: catches every inline style built
+   from the old "Montserrat" font (fontLabel var), e.g. "Banking That
+   Honors Legacy" ── */
+[style*="Montserrat"] {
+  font-family: var(--savoy-label-font) !important;
+  letter-spacing: 3px !important;
+  text-transform: none !important;
+}
+
+/* ── Baseline fallback for any heading/paragraph tag that has no
+   inline font-family at all ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--savoy-heading-font);
+}
+
+body, p {
+  font-family: var(--savoy-body-font);
+}
+
+/* ── OLD FONT THEME (pre-change), kept for reference / easy revert ──
+[style*="Cormorant"] {
+  font-family: 'Cormorant Garamond', 'Georgia', serif !important;
+}
+[style*="General Sans"], [style*="Inter"] {
+  font-family: 'General Sans', 'Inter', system-ui, sans-serif !important;
+}
+*/
