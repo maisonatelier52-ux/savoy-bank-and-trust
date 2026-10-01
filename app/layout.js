@@ -58,7 +58,7 @@ const SAVOY_BODY_FONT =
 const SAVOY_LABEL_FONT =
   process.env.NEXT_PUBLIC_LABEL_FONT ?? "'Montserrat', system-ui, sans-serif";
 
-const BASE_URL = "https://savoy-bank-and-trust.vercel.app/"; // ← update to your real domain https://www.savoybankandtrust.com
+const BASE_URL = "https://savoy-bank-and-trust.vercel.app"; // ← update to your real domain https://www.savoybankandtrust.com
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
@@ -106,7 +106,7 @@ export const metadata = {
       "Tailored banking, trust, and market services for clients who value discretion, continuity, and clear guidance in a complex international landscape.",
     images: [
       {
-        url: "/savoy-card.jpng",
+        url: "/savoy-card.png",
         width: 1200,
         height: 630,
         alt: "Savoy Bank & Trust – Private Banking in The Bahamas",
@@ -121,7 +121,7 @@ export const metadata = {
     title: "Savoy Bank & Trust | Private Banking in The Bahamas",
     description:
       "Tailored banking, trust, and market services for clients who value discretion, continuity, and clear guidance.",
-    images: ["/savoy-card.jpng"],
+    images: ["/savoy-card.png"],
   },
 
   icons: {
@@ -171,7 +171,7 @@ export default function RootLayout({ children }) {
               name: "Savoy Bank & Trust",
               url: BASE_URL,
               logo: `${BASE_URL}/savoy-logo.png`,
-              image: `${BASE_URL}/savoy-card.jpng`,
+              image: `${BASE_URL}/savoy-card.png`,
               description:
                 "A privately held financial institution in The Bahamas offering tailored banking, trust, and market services.",
               address: {
